@@ -150,7 +150,9 @@ Run the following and select your favorite editor (3 m'lord!).
 
 Then just add a line for your usync. For example, let's say we want it to sync
 our files everyday at 5AM using the `work.prf` file.
-`0 5 * * * usync -f work`
+```
+0 5 * * * usync -f work
+```
 Blamo! It's done, and your computer will now sync your stuff to your server
 every day at 5AM.
 
