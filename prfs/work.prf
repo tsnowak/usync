@@ -1,0 +1,54 @@
+
+# Theodore Nowak
+# tsnowak@umich.edu
+# 02/28/2018
+
+# Move me to `~/.unison`
+
+# local, current computer root dir
+root = /home/mylocalname/
+# server root dir
+root = ssh://myremotename@myserver//path/to/storage/area/
+
+# add more compiled file extensions
+# this is like a gitignore list
+ignore = BelowPath .git
+ignore = Name *.so
+ignore = Name *.o
+ignore = Name *.tmp
+ignore = Name *.ko
+ignore = Name *.DS_Store
+ignore = Name *.swp
+ignore = Name ._*
+ignore = Name *.ini
+ignore = Name *.pyc
+ignore = Name *.m~
+
+# try and keep things quiet
+# TODO: I can't shut up the attributes transfer
+perms=0
+auto = true
+silent = true
+times = true
+
+# keep track of the changes in logfile
+log = true
+logfile = /home/mylocalname/.unison/unison.log
+
+# Paths from root path that we want to sync
+# Ex:
+#   Local-
+#       root:/home/mylocalname
+#               - /home/mylocalname/Documents
+#               - /home/mylocalname/Work
+#               - /home/mylocalname/Teaching
+# The locals files in the local file paths above will be sync'd in the
+# same locations above the remote root path
+#   Remote-
+#      root:ssh//myremotename@myserver//path/to/storage/area
+#               - /path/to/storage/area/Documents
+#               - /path/to/storage/area/Work
+#               - /path/to/storage/area/Teaching
+path = Documents
+path = Work
+path = Teaching

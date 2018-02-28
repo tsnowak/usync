@@ -1,0 +1,79 @@
+#!/bin/bash
+
+# Theodore Nowak
+# tsnowak@umich.edu
+# 02/28/2018
+
+# implemented using unison 2.40.*
+# Look into using flags with getopts command
+# Show percentage of progress with lsof (offset of file read pointer?)
+# Make a sync for settings files (.vimrc, etc.) and for media/data files
+
+INTERVAL=.1     # sleep interval
+PRF=''      # sync type/prf file used
+DEFAULT='work'
+
+dflag=''
+fflag=''
+
+function HELP {
+    printf "\nUsage:\n";
+    printf "[-d]\t\tUsed to sync the Default file ${DEFAULT}.prf.\n";
+    printf "[-f] [FILENAME]\tUsed to sync via a specified PRF file.\n";
+    printf "[-h]\t\tUsed to print flag options.\n\n";
+    exit 1
+}
+
+function UNISON {
+    printf "\nStarting Sync.\n"
+
+    # $PRF is name of .unison/$PRF.prf file
+    /usr/bin/unison $PRF &
+    pid=$! # id process of the running command
+
+    # single quotes interprate everything literally
+    # double will interprate backslash commands
+    spin='-\|/'
+
+    while kill -0 $pid 2>/dev/null
+    do
+        i=$(( (i+1) %4 ))
+        printf "\r${spin:$i:1}";
+        sleep $INTERVAL;
+    done
+
+    printf "\nSync Complete!\n"
+}
+
+while getopts 'df:h' flag; do
+  case "${flag}" in
+    d)
+        dflag='true'
+        PRF=$DEFAULT
+        printf "\nSyncing via ${PRF}.prf\n";
+        UNISON
+        ;;
+    f)
+        PRF="${OPTARG}" >&2
+        printf "\nSyncing via ${PRF}.prf\n";
+        UNISON
+        ;;
+    h)
+        HELP
+        ;;
+    \?)
+        #printf "Invalid option: -${OPTARG}\n" >&1;
+        HELP
+        exit 1
+        ;;
+    :)
+        #printf "Option -${OPTARG} requires an argument.\n";
+        HELP
+        exit 1
+        ;;
+  esac
+done
+
+if [ $OPTIND -eq 1 ]; then
+    HELP
+fi
