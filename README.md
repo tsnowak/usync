@@ -88,7 +88,7 @@ ignore = Name *.so
 ignore = Name *.o
 ```
 Here we say, "Don't sync anything below a `.git` folder, and don't sync
-anything of file type .so or .o." There are many types of files that you might
+anything of file type `.so` or `.o`." There are many types of files that you might
 want to ignore, and you can always add them here.
 
 ## Further Options
