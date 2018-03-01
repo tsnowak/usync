@@ -14,8 +14,8 @@ tutorial we're going to stick with it!
 
 ## Ubuntu Linux or WSL
 
-To install `unison-2.40` on ubuntu we need to reach back into the bowels of the
-ubuntu package archive.
+To install `unison-2.40` binaries on Ubuntu we need to reach back into the
+bowels of the Ubuntu package manager archive.
 ```
 wget http://mirrors.kernel.org/ubuntu/pool/universe/u/unison/unison_2.40.102-2ubuntu1_amd64.deb
 ```
@@ -42,9 +42,26 @@ git clone git@github.com:bcpierce00/unison.git
 cd unison
 git checkout unison-2.40
 brew install ocaml
-make UISTYLE=text
 ```
-This should work, but honestly I haven't tested it :D .
+Then, according to this
+[somewhat obscure github question](https://github.com/bcpierce00/unison/issues/18)
+ we need to go to line 45 of `unison/src/mkProjectInfo.ml` and change
+```
+$Rev $
+```
+to
+```
+$Rev: 600$
+```
+Don't ask me why, I have no bloody idea. But, now we can proceed to compiling
+our beloved unison!
+
+```
+make UISTYLE=text
+which unison
+```
+Here we tell it to make the text only version (non-GUI) and then check that
+it exists.
 
 Whew, that was annoying, but hey, we're making progress despite having to drag
 you silly Mac users along!
@@ -52,12 +69,11 @@ you silly Mac users along!
 ## Linux and WSL from Source
 
 If you're a hipster and want to install from `unison-2.40` from source on
-Linux~~/WSL~~ and not WSL, just follow the Mac OSX instructions except
-`sudo apt-get install ocaml`.
+Linux/WSL, just follow the Mac OSX instructions except
+`sudo apt-get install ocaml` instead of `brew install ocaml`.
 
-If you want to install `ocaml` from source, or if you want to figure out why
-unison is failing to build on WSL more power to you, but you're on your own from
-here on out buckaroo.
+If you want to install `ocaml` from source more power to you, but you're
+on your own from here on out buckaroo...
 
 # PRF Files
 
