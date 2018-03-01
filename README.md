@@ -172,5 +172,45 @@ our files everyday at 5AM using the `work.prf` file.
 Blamo! It's done, and your computer will now sync your stuff to your server
 every day at 5AM.
 
+# To Infinity, and Beyond!
+
+## Hold Version
+
+Odds are you'll probably want to keep using unison into the future, but if you
+do an `apt-get upgrade` on Ubuntu Linux/WSL unison will get upgraded to the
+latest version, which will break the system (unison doesn't work with  
+different versions in your sync cluster). To remedy this, we'll want to put
+unison on hold
+```
+sudo apt mark hold unison
+```
+If you installed unison from source, no package manager is managing it, so you
+don't need to worry about this.
+
+## SSH Username/Computer Persistence
+
+If you're kinda new to Unix, you might be annoyed by having to enter your
+password each time unison syncs. Well that's too bad and you'll just have to get
+over it you lazy... just kidding.
+
+I've fortunately made some handy-dandy scripts to help make managing ssh
+configurations easier. I haven't uploaded those yet, but soon!
+
+Now some might ask, "Ted, why do I need ssh management tools, I have two hands
+and a brain full of unbridled knowledge and zeal?" Well let me tell ya'. If you
+work on a lot of computers, it can become tedious to make an entry in the
+`.ssh/config` across all previous machines for each new machine. Additionally,
+you'll need to make ssh keys for each machine, and put them in the
+`authorized_keys` file on every other existing machine. Anyways, for the
+algorithmically minded I think the complexity becomes `O(n^5)` and that's just
+too much `n` for me, you know what I'm sayin'? I'm more of an `O(n)` or `O(n^2)`
+ on a good day kinda guy.
+
+For now, until I get that code uploaded check out these docs:
+
+* [Digital Ocean SSH Config Tutorial](https://www.digitalocean.com/community/tutorials/how-to-configure-custom-connection-options-for-your-ssh-client)
+
 # References
-- [The Unison Manual](http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html)
+For further information:
+
+* [The Unison Manual](http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html)
