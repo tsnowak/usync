@@ -194,7 +194,7 @@ password each time unison syncs. Well that's too bad and you'll just have to get
 over it you lazy... just kidding.
 
 I've fortunately made some handy-dandy scripts to help make managing ssh
-configurations easier. I haven't uploaded those yet, but soon!
+configurations easier. ~~I haven't uploaded those yet, but soon!~~ You can find these scripts [here](https://github.com/tsnowak/ssh-tools).
 
 Now some might ask, "Ted, why do I need ssh management tools, I have two hands
 and a brain full of unbridled knowledge and zeal?" Well let me tell ya'. If you
