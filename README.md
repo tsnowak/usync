@@ -1,3 +1,6 @@
+# USYNC
+### Code for automatically syncing files across multiple machines.
+
 This is a script, based upon
 [unison](https://www.cis.upenn.edu/~bcpierce/unison/), for syncing folders
 between computers. If you attach it to a cronjob or a system startup file, it
